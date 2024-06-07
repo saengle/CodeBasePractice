@@ -7,10 +7,14 @@
 
 import UIKit
 
+import SnapKit
+
 class LottoView: UIView {
     
     let lottoTextField: UITextField = {
         let tf = UITextField()
+        tf.backgroundColor = .red
+        tf.textColor = .black
         return tf
     }()
     
@@ -55,8 +59,12 @@ class LottoView: UIView {
         super.init(frame: frame)
         
         configureHierachy()
-        
+        configureConstraints()
         self.backgroundColor = .white
+        commonLabel.backgroundColor = .cyan
+        dateLabel.backgroundColor = .brown
+        roundLabel.backgroundColor = .gray
+        lottoStackView.backgroundColor = .green
     }
     
     required init?(coder: NSCoder) {
@@ -67,13 +75,14 @@ class LottoView: UIView {
 extension LottoView {
     private func configureHierachy() {
         
-        [].forEach{self.addSubview($0)}
+        [lottoTextField, commonLabel, dateLabel, roundLabel, lottoStackView].forEach{self.addSubview($0)}
+//        addSubview(lottoTextField)
         
-        [lottofirstLabel, lottoSecondLabel, lottoThirdLabel, lottoFourthLabel, lottoFifthLabel, lottoSixthLabel, lottoBonusLabel, plusLabel].forEach{lottoStackView.addSubview($0)}
-        
-        for i in 0...lottoCollection.count - 1 {
-            configureLottoLabels(number: i, label: lottoCollection[i])
-        }
+//        [lottofirstLabel, lottoSecondLabel, lottoThirdLabel, lottoFourthLabel, lottoFifthLabel, lottoSixthLabel, lottoBonusLabel, plusLabel].forEach{lottoStackView.addSubview($0)}
+//        
+//        for i in 0...lottoCollection.count - 1 {
+//            configureLottoLabels(number: i, label: lottoCollection[i])
+//        }
         
         
     }
@@ -86,8 +95,33 @@ extension LottoView {
         label.layer.cornerRadius = 20
     }
     
-    private func configureStraints() {
+    private func configureConstraints() {
+        lottoTextField.snp.makeConstraints{ make in
+            make.top.equalTo(self.safeAreaLayoutGuide).inset(16)
+            make.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(20)
+            make.height.equalTo(44)
+        }
+        commonLabel.snp.makeConstraints { make in
+            make.leading.equalTo(self.safeAreaLayoutGuide).offset(16)
+            make.top.equalTo(self.lottoTextField.snp.bottom).offset(16)
+            make.width.height.equalTo(20)
+        }
+        dateLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(commonLabel.snp.centerY)
+            make.trailing.equalTo(self.safeAreaLayoutGuide).inset(16)
+            make.width.height.equalTo(20)
+        }
         
+        roundLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(dateLabel.snp.bottomMargin).offset(32)
+            make.width.height.equalTo(20)
+        }
+        lottoStackView.snp.makeConstraints { make in
+            make.top.equalTo(roundLabel.snp.bottom).offset(20)
+            make.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(16)
+            make.height.equalTo(100)
+        }
         
     }
 }
