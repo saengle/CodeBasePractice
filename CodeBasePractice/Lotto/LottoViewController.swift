@@ -11,13 +11,19 @@ import UIKit
 
 class LottoViewController: UIViewController {
     
-    
+   let lottoView = LottoView()
+    override func loadView() {
+        view = lottoView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .white
+//        self.view.backgroundColor = .white
     }
 }
 
+extension LottoViewController {
 
+    
+}
