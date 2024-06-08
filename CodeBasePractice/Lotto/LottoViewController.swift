@@ -11,19 +11,20 @@ import UIKit
 
 class LottoViewController: UIViewController {
     
-   let lottoView = LottoView()
+    let apiManager = LottoApiManager()
+    var myLotto: [LottoModel] = []
+    let lottoView = LottoView()
     override func loadView() {
         view = lottoView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        self.view.backgroundColor = .white
+        myLotto.append(contentsOf: LottoApiManager.fetchLotto(keyword: 1000))
     }
 }
 
 extension LottoViewController {
-
+    
     
 }
