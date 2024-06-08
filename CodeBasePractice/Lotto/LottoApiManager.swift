@@ -17,7 +17,7 @@ class LottoApiManager {
         AF.request(url).responseDecodable(of: LottoModel.self) { response in
             switch response.result {
             case .success(let value):
-                print(value, "응답 성공")
+//                print(value, "응답 성공")
                     myLotto.append(value)
             case .failure(let error):
                 print(error, "응답 실패")
