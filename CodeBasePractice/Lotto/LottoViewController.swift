@@ -15,20 +15,7 @@ class LottoViewController: UIViewController {
     var myLotto: [LottoModel] = []
     let lottoView = LottoView()
     
-    override func loadView() {
-        view = lottoView
-        getLastRounds()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        myLotto.append(contentsOf: LottoApiManager.fetchLotto(keyword: 1000))
-    }
-}
-
-extension LottoViewController {
-    
-    func getLastRounds() -> Int {
+    var lastRounds: Int {
         //(2002, 12, 7) 1회 추첨일
         var days: Int
         var weeks = -1
@@ -45,5 +32,17 @@ extension LottoViewController {
         // 만약 -1 이 return 되는것에 대한 처리 필요.
         return weeks
     }
- 
+    
+    override func loadView() {
+        view = lottoView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        myLotto.append(contentsOf: LottoApiManager.fetchLotto(keyword: lastRounds))
+    }
+}
+
+extension LottoViewController {
+    
 }
