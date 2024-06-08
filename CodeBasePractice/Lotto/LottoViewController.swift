@@ -44,7 +44,7 @@ class LottoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         myLotto.append(contentsOf: LottoApiManager.fetchLotto(keyword: lastRounds))
-//        configToolbar()
+        configToolbar()
     }
 }
 
@@ -67,6 +67,40 @@ extension LottoViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         self.lottoView.lottoTextField.text = "\(list[row])회차"
     }
     
-    
+    func configToolbar() {
+        // toolbar를 만들어준다.
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor.white
+        toolBar.sizeToFit()
+        
+        // 만들어줄 버튼
+        // flexibleSpace는 취소~완료 간의 거리를 만들어준다.
+        let doneBT = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(self.donePicker))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelBT = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(self.cancelPicker))
+        
+        // 만든 아이템들을 세팅해주고
+        toolBar.setItems([cancelBT,flexibleSpace,doneBT], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        // 악세사리로 추가한다.
+        self.lottoView.lottoTextField.inputAccessoryView = toolBar
+    }
+
+    // "완료" 클릭 시 데이터를 textfield에 입력 후 입력창 내리기
+    @objc func donePicker() {
+        let row = self.lottoView.lottoPicker.selectedRow(inComponent: 0)
+        self.lottoView.lottoPicker.selectRow(row, inComponent: 0, animated: false)
+        self.lottoView.lottoTextField.text = "\(row)회차"
+        self.lottoView.lottoTextField.resignFirstResponder()
+    }
+
+    // "취소" 클릭 시 textfield의 텍스트 값을 nil로 처리 후 입력창 내리기
+    @objc func cancelPicker() {
+        self.lottoView.lottoTextField.text = nil
+        self.lottoView.lottoTextField.resignFirstResponder()
+    }
     
 }
