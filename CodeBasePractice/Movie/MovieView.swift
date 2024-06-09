@@ -29,6 +29,7 @@ class MovieView: UIView {
         let tf =  UITextField()
         tf.tintColor = .white
         tf.textColor = .white
+        tf.returnKeyType = .search
         return tf
     }()
     

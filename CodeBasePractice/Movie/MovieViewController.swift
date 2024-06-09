@@ -25,6 +25,8 @@ class MovieViewController: UIViewController {
         movieView.textField.delegate = self
         
         movieView.searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
+        movieView.textField.addTarget(self, action: #selector(searchButtonTapped), for: .editingDidEnd)
+        movieView.textField.addTarget(self, action: #selector(searchButtonTapped), for: .editingDidEndOnExit)
     }
 }
 
@@ -44,13 +46,17 @@ extension MovieViewController: UITableViewDelegate, UITableViewDataSource{
 }
 
 extension MovieViewController: UITextFieldDelegate {
-  
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        keyboardDismiss()
+    }
     
 }
 extension MovieViewController {
     @objc func searchButtonTapped() {
         guard let temp = movieView.textField.text else { return }
         searchMovieRank(query: temp)
+        keyboardDismiss()
     }
     
     private func searchMovieRank(query: String) {
@@ -65,5 +71,9 @@ extension MovieViewController {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    @objc func keyboardDismiss() {
+        view.endEditing(true)
     }
 }
