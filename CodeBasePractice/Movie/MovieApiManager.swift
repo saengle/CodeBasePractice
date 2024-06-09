@@ -10,7 +10,6 @@ import UIKit
 import Alamofire
 
 class MovieApiManager {
-    //    \(self.movieKey)&targetDt=20240608
     
     func fetchDataAlamofire(query: String, completion: @escaping((Result<Movies, Error>) -> Void)) {
         // Mark:  query를 파라미터 타입의 딕셔너리에 담음
