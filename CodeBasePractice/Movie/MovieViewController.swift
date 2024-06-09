@@ -26,5 +26,23 @@ class MovieViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
+        movieView.tableView.delegate = self
+        movieView.tableView.dataSource = self
+        
     }
+}
+
+extension MovieViewController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.identifier, for: indexPath) as? MovieTableViewCell else { return UITableViewCell()}
+        
+        
+        
+        return cell
+    }
+    
 }

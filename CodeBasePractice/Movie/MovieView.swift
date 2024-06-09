@@ -57,7 +57,7 @@ class MovieView: UIView {
         configureLayout()
 
         tableView.backgroundColor = .red
-//        tableView.register(<#T##nib: UINib?##UINib?#>, forCellReuseIdentifier: <#T##String#>)
+        tableView.register(MovieTableViewCell.self, forCellReuseIdentifier: MovieTableViewCell.identifier)
     }
     
     required init?(coder: NSCoder) {
