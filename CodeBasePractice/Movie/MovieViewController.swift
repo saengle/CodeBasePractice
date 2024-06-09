@@ -11,6 +11,7 @@ class MovieViewController: UIViewController {
     
     let movieView = MovieView()
     let movieApi = MovieApiManager()
+    var movieList: [Movie] = []
     
     override func loadView() {
         view = movieView
@@ -21,7 +22,10 @@ class MovieViewController: UIViewController {
         movieApi.fetchDataAlamofire(query: "20240608") { result in
             switch result {
             case .success(let movie):
-                print(movie)
+                if let tempMovieList = movie.boxOfficeResult?.dailyBoxOfficeList {
+                    self.movieList = tempMovieList
+                    self.movieView.tableView.reloadData()
+                }
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -34,14 +38,14 @@ class MovieViewController: UIViewController {
 
 extension MovieViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return movieList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.identifier, for: indexPath) as? MovieTableViewCell else { return UITableViewCell()}
-        
-        
-        
+        cell.rankBoxLabel.text = "\(indexPath.row)"
+        cell.movieTitleLabel.text = movieList[indexPath.row].movieNm
+        cell.movieOpenDateLabel.text = movieList[indexPath.row].openDt
         return cell
     }
     
