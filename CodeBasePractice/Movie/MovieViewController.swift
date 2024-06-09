@@ -19,20 +19,12 @@ class MovieViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        movieApi.fetchDataAlamofire(query: "20240608") { result in
-            switch result {
-            case .success(let movie):
-                if let tempMovieList = movie.boxOfficeResult?.dailyBoxOfficeList {
-                    self.movieList = tempMovieList
-                    self.movieView.tableView.reloadData()
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+        searchMovieRank(query: "20240608")
         movieView.tableView.delegate = self
         movieView.tableView.dataSource = self
+        movieView.textField.delegate = self
         
+        movieView.searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
     }
 }
 
@@ -49,4 +41,29 @@ extension MovieViewController: UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
+}
+
+extension MovieViewController: UITextFieldDelegate {
+  
+    
+}
+extension MovieViewController {
+    @objc func searchButtonTapped() {
+        guard let temp = movieView.textField.text else { return }
+        searchMovieRank(query: temp)
+    }
+    
+    private func searchMovieRank(query: String) {
+        movieApi.fetchDataAlamofire(query: query) { result in
+            switch result {
+            case .success(let movie):
+                if let tempMovieList = movie.boxOfficeResult?.dailyBoxOfficeList {
+                    self.movieList = tempMovieList
+                    self.movieView.tableView.reloadData()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
