@@ -56,7 +56,7 @@ class MovieView: UIView {
         configureHierachy()
         configureLayout()
 
-        tableView.backgroundColor = .red
+        tableView.backgroundColor = .clear
         tableView.register(MovieTableViewCell.self, forCellReuseIdentifier: MovieTableViewCell.identifier)
     }
     
