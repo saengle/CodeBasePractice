@@ -43,9 +43,13 @@ class LottoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        myLotto.append(contentsOf: LottoApiManager.fetchLotto(keyword: lastRounds))
+        //데이터 최근회차로 가져와서 그리기.
+        LottoApiManager.fetchLotto(keyword: lastRounds) { Lotto in
+            self.myLotto.append(Lotto)
+            DispatchQueue.main.async {
+                self.setLottery(lottoLabel: self.lottoView.lottoCollection)
+            }        }
         configToolbar()
-        setLottery(lottoLabel: lottoView.lottoCollection)
     }
 }
 
@@ -96,6 +100,13 @@ extension LottoViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         self.lottoView.lottoPicker.selectRow(row, inComponent: 0, animated: false)
         self.lottoView.lottoTextField.text = "\(list[row])회차"
         self.lottoView.lottoTextField.resignFirstResponder()
+        
+        LottoApiManager.fetchLotto(keyword: list[row]) { Lotto in
+            self.myLotto.append(Lotto)
+            DispatchQueue.main.async {
+                self.setLottery(lottoLabel: self.lottoView.lottoCollection)
+            }
+        }
     }
     
     // "취소" 클릭 시 textfield의 텍스트 값을 nil로 처리 후 입력창 내리기
@@ -143,7 +154,9 @@ extension LottoViewController {
             }
             cnt += 1
         }
+        lottoView.dateLabel.text = myLotto[0].drwNoDate + " 추첨"
+        lottoView.roundLabel.text = "\(myLotto[0].drwNo)회 당첨결과"
+        winLotto.removeAll()
+        self.myLotto.removeAll()
     }
-    
-    
 }

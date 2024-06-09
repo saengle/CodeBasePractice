@@ -70,12 +70,12 @@ class LottoView: UIView {
         configureHierachy()
         configureConstraints()
         self.backgroundColor = .white
-        commonLabel.backgroundColor = .cyan
-        dateLabel.backgroundColor = .brown
-        roundLabel.backgroundColor = .gray
         commonLabel.text = "당첨번호 안내"
-        roundLabel.text = "999회 당첨결과"
         
+        dateLabel.font = .systemFont(ofSize: 12)
+        dateLabel.textColor = .systemGray
+      
+        roundLabel.font = .boldSystemFont(ofSize: 24)
     }
     
     required init?(coder: NSCoder) {
@@ -101,6 +101,9 @@ extension LottoView {
             i.backgroundColor = .cyan
             i.layer.cornerRadius = seperateLottoBallWidth / 2
             i.layer.masksToBounds = true
+            i.textAlignment = .center
+            i.textColor = .white
+            i.font = .boldSystemFont(ofSize: 17)
         }
         
     }
