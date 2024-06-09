@@ -10,6 +10,7 @@ import UIKit
 class MovieViewController: UIViewController {
     
     let movieView = MovieView()
+    let movieApi = MovieApiManager()
     
     override func loadView() {
         view = movieView
@@ -17,5 +18,13 @@ class MovieViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        movieApi.fetchDataAlamofire(query: "20240608") { result in
+            switch result {
+            case .success(let movie):
+                print(movie)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }
