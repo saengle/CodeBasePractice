@@ -22,6 +22,10 @@
 		8E8E6D182C13357E007CAB56 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8E8E6D172C13357E007CAB56 /* SnapKit */; };
 		8E8E6D1B2C13359A007CAB56 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8E8E6D1A2C13359A007CAB56 /* Alamofire */; };
 		8E8E6D1E2C1335B0007CAB56 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8E8E6D1D2C1335B0007CAB56 /* Kingfisher */; };
+		8E8E6D212C15C5B5007CAB56 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8E6D202C15C5B5007CAB56 /* MovieViewController.swift */; };
+		8E8E6D232C15C5BE007CAB56 /* MovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8E6D222C15C5BE007CAB56 /* MovieView.swift */; };
+		8E8E6D252C15C5C8007CAB56 /* MovieApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8E6D242C15C5C8007CAB56 /* MovieApiManager.swift */; };
+		8E8E6D272C15C5CF007CAB56 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8E6D262C15C5CF007CAB56 /* MovieModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +43,10 @@
 		8E8E6D102C1310DC007CAB56 /* LottoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoView.swift; sourceTree = "<group>"; };
 		8E8E6D122C13325B007CAB56 /* LottoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoModel.swift; sourceTree = "<group>"; };
 		8E8E6D142C1332F4007CAB56 /* LottoApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoApiManager.swift; sourceTree = "<group>"; };
+		8E8E6D202C15C5B5007CAB56 /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
+		8E8E6D222C15C5BE007CAB56 /* MovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieView.swift; sourceTree = "<group>"; };
+		8E8E6D242C15C5C8007CAB56 /* MovieApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieApiManager.swift; sourceTree = "<group>"; };
+		8E8E6D262C15C5CF007CAB56 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +83,7 @@
 		8E8E6CF42C106078007CAB56 /* CodeBasePractice */ = {
 			isa = PBXGroup;
 			children = (
+				8E8E6D1F2C15C592007CAB56 /* Movie */,
 				8E8E6D0F2C1310CD007CAB56 /* Lotto */,
 				8E8E6CF52C106078007CAB56 /* AppDelegate.swift */,
 				8E8E6CF72C106078007CAB56 /* SceneDelegate.swift */,
@@ -97,6 +106,17 @@
 				8E8E6D142C1332F4007CAB56 /* LottoApiManager.swift */,
 			);
 			path = Lotto;
+			sourceTree = "<group>";
+		};
+		8E8E6D1F2C15C592007CAB56 /* Movie */ = {
+			isa = PBXGroup;
+			children = (
+				8E8E6D202C15C5B5007CAB56 /* MovieViewController.swift */,
+				8E8E6D222C15C5BE007CAB56 /* MovieView.swift */,
+				8E8E6D242C15C5C8007CAB56 /* MovieApiManager.swift */,
+				8E8E6D262C15C5CF007CAB56 /* MovieModel.swift */,
+			);
+			path = Movie;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,12 +201,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E8E6D272C15C5CF007CAB56 /* MovieModel.swift in Sources */,
 				8E8E6D132C13325B007CAB56 /* LottoModel.swift in Sources */,
 				8E8E6D0E2C10610C007CAB56 /* LottoViewController.swift in Sources */,
 				8E8E6CFA2C106078007CAB56 /* ViewController.swift in Sources */,
 				8E8E6CF62C106078007CAB56 /* AppDelegate.swift in Sources */,
 				8E8E6CF82C106078007CAB56 /* SceneDelegate.swift in Sources */,
+				8E8E6D232C15C5BE007CAB56 /* MovieView.swift in Sources */,
+				8E8E6D212C15C5B5007CAB56 /* MovieViewController.swift in Sources */,
 				8E8E6D0C2C1060DF007CAB56 /* SecureApi.swift in Sources */,
+				8E8E6D252C15C5C8007CAB56 /* MovieApiManager.swift in Sources */,
 				8E8E6D112C1310DC007CAB56 /* LottoView.swift in Sources */,
 				8E8E6D152C1332F4007CAB56 /* LottoApiManager.swift in Sources */,
 			);
