@@ -25,8 +25,14 @@ class MovieViewController: UIViewController {
         movieView.textField.delegate = self
         
         movieView.searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
+        //        movieView.addGestureRecognizer(<#T##gestureRecognizer: UIGestureRecognizer##UIGestureRecognizer#>)
         movieView.textField.addTarget(self, action: #selector(searchButtonTapped), for: .editingDidEnd)
         movieView.textField.addTarget(self, action: #selector(searchButtonTapped), for: .editingDidEndOnExit)
+        
+//        movieView.self.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: movieView.self, action: #selector(keyboardDismiss))
+//        movieView.self.addGestureRecognizer(tap)
+        
     }
 }
 

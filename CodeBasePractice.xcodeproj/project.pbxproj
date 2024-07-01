@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E3111992C33072700E1BB80 /* URLSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3111982C33072700E1BB80 /* URLSessionDelegate.swift */; };
 		8E8E6CF62C106078007CAB56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8E6CF52C106078007CAB56 /* AppDelegate.swift */; };
 		8E8E6CF82C106078007CAB56 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8E6CF72C106078007CAB56 /* SceneDelegate.swift */; };
 		8E8E6CFA2C106078007CAB56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8E6CF92C106078007CAB56 /* ViewController.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E3111982C33072700E1BB80 /* URLSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDelegate.swift; sourceTree = "<group>"; };
 		8E8E6CF22C106078007CAB56 /* CodeBasePractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeBasePractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E8E6CF52C106078007CAB56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E8E6CF72C106078007CAB56 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E3111972C33071300E1BB80 /* URLSessionDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				8E3111982C33072700E1BB80 /* URLSessionDelegate.swift */,
+			);
+			path = URLSessionDelegate;
+			sourceTree = "<group>";
+		};
 		8E8E6CE92C106078007CAB56 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +97,7 @@
 		8E8E6CF42C106078007CAB56 /* CodeBasePractice */ = {
 			isa = PBXGroup;
 			children = (
+				8E3111972C33071300E1BB80 /* URLSessionDelegate */,
 				8E8E6D2A2C15EF05007CAB56 /* Extension */,
 				8E8E6D1F2C15C592007CAB56 /* Movie */,
 				8E8E6D0F2C1310CD007CAB56 /* Lotto */,
@@ -222,6 +233,7 @@
 				8E8E6CF62C106078007CAB56 /* AppDelegate.swift in Sources */,
 				8E8E6CF82C106078007CAB56 /* SceneDelegate.swift in Sources */,
 				8E8E6D232C15C5BE007CAB56 /* MovieView.swift in Sources */,
+				8E3111992C33072700E1BB80 /* URLSessionDelegate.swift in Sources */,
 				8E8E6D2C2C15EF43007CAB56 /* ViewIdentifier+Extension.swift in Sources */,
 				8E8E6D212C15C5B5007CAB56 /* MovieViewController.swift in Sources */,
 				8E8E6D0C2C1060DF007CAB56 /* SecureApi.swift in Sources */,
